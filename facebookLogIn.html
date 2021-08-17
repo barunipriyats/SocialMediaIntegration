@@ -8,197 +8,10 @@
     <meta name="description" content="Sign In / Sign Up along with Social Media Integration">
     <meta name="author" content="Baruni Priya T S">
     <link rel="shortcut icon" href="img/TitleLogo.svg">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  background-color: #28282b;
-  font-family: 'Quicksand', sans-serif;
-}
-
-#login-button {
-  width: auto;
-  height: auto;
-  top: 50;
-}
-
-#logout-button {
-  display: none;
-}
-
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#f00, #f0f);
-  clip-path: circle(30% at right 70%);
-}
-
-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#f00, #f0f);
-  clip-path: circle(30% at 10% 10%);
-}
-
-.btn {
-  width: 150px;
-  background-color: #ff0066;
-  border: none;
-  outline: none;
-  height: 49px;
-  border-radius: 49px;
-  color: #28282b;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin: 20px 0 0 0;
-  cursor: pointer;
-  transition: 0.5s;
-  opacity: 0.7;
-  font-size: 0.8rem;
-}
-
-.btn:hover {
-  background-color: #ff0066;
-  opacity: 1;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
-  flex-wrap: wrap;
-  /* margin: 50px 0; */
-}
-.container .card {
-  margin-top: 150px;  
-  position: relative;
-  width: 300px;
-  height: 350px;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  overflow: hidden;
-}
-.container .card .content {
-  text-align: center;
-  transition: 0.5s;
-}
-.container .card .content .imgBx {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  overflow: hidden;
-  top: 30px;
-  left: 85px;
-  border: 3px solid rgba(0, 0, 0, 0.25);
-}
-.container .card .content .imgBx img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.container .card .sci {
-  position: absolute;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  padding-top: 140px;
-}
-.container .card .sci li {
-  list-style: none;
-  text-align: center;
-}
-
-p {
-  color: #ff0066;
-  font-weight: 900;
-}
-
-p span {
-  font-weight: 400;
-  color: #fff;
-}
-
-.row {
-  margin-top: 300px;
-}
-
-    </style>
+    <link rel="stylesheet" href="css/facebookLogIn.css">
 </head>
 <body>
     
-    <!-- <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-            appId      : '3744043092364414',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v11.0'
-            });
-            
-            FB.AppEvents.logPageView();   
-            
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        function fbLogin() {
-            FB.login(function(response) {
-                if(response.authResponse) {
-                    fbAfterLogin();
-                }
-            });
-        }
-        function fbAfterLogin() {
-            FB.getLoginStatus(function(response) {
-                if(response.status === 'connected') {
-                    FB.api('/me', function(response) {
-                        console.log(response);
-                    });
-                }
-            });
-        }
-    </script> -->
-
-    <!-- <a href="javascript:void(0)" onclick="fbLogin()">Login with facebook</a> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -210,7 +23,6 @@ p span {
             <div class="row margin-bottom-small">
                 <div id="login-button" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();">Log in with Facebook</div>
                 <div hidden id="logout-button" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="logout();">Log Out</div>
-                <!-- <div id="status"></div> -->
             </div>
         </div>
     </section>
@@ -249,11 +61,13 @@ p span {
                 document.getElementById('logout-button').style.display = 'none';
             }
         }
+        
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
         }
+        
         function logout() {
             FB.logout(function (response) {
                 document.getElementById('logout-button').style.display = 'none';
@@ -261,6 +75,7 @@ p span {
                 document.location.reload();
             });
         }
+        
         window.fbAsyncInit = function() {
                                 FB.init({
                                 appId      : '3744043092364414',
@@ -272,7 +87,7 @@ p span {
                 statusChangeCallback(response);
             });
         };
-        // Load the SDK asynchronously
+        
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -281,8 +96,6 @@ p span {
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        // Here we run a very simple test of the Graph API after login is
-        // successful.  See statusChangeCallback() for when this call is made.
         function testAPI() {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', 'GET', {
@@ -296,11 +109,9 @@ p span {
                 $("#name").text(response.name);
                 $("#first").text(response.first_name);
                 $("#last").text(response.last_name);
-     
-                // document.getElementById('status').innerHTML ="<div class='data'><div class='containerg' data-tilt><img id='image' class='rounded-circle' src='" + response.picture.data.url + "' width='100px' height='100px'/><div><h3>Name</h3>"+" "+response.name+"<h3>First Name</h3>"+" "+response.first_name+"<h3>Last Name</h3>"+" "+response.last_name+"</div>";
-               
             });
         }
     </script>
+    
 </body>
 </html>
