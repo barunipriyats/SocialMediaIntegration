@@ -37,7 +37,7 @@ body {
             top: 50;
     }
     #logout-button{
-        
+        display: none;
     }
 
         
@@ -273,7 +273,7 @@ p span {
             }, function(response) {
                 console.log('Successful login for: ' + response.name);
                  document.getElementById('login-button').style.display = 'none';
-//                 document.getElementById('logout-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'none';
                 document.getElementById('data').style.display = 'block';
                 $("#image").attr('src', response.picture.data.url);
                 $("#name").text(response.name);
