@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Integration</title>
+    <meta name="description" content="Sign In / Sign Up along with Social Media Integration">
+    <meta name="author" content="Baruni Priya T S">
+    <link rel="shortcut icon" href="img/TitleLogo.svg">
+</head>
+<body>
+    
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '3744043092364414',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v11.0'
+            });
+            
+            FB.AppEvents.logPageView();   
+            
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fbLogin() {
+            FB.login(function(response) {
+                if(response.authResponse) {
+                    fbAfterLogin();
+                }
+            });
+        }
+        function fbAfterLogin() {
+            FB.getLoginStatus(function(response) {
+                if(response.status === 'connected') {
+                    FB.api('/me', function(response) {
+                        console.log(response);
+                    });
+                }
+            });
+        }
+    </script>
+
+    <a href="javascript:void(0)" onclick="fbLogin()">Login with facebook</a>
+</body>
+</html>
