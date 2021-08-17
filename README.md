@@ -20,7 +20,7 @@ This repository consists of HTML, CSS & JS code for a sign in / sign up page (fr
 https://barunipriyats.github.io/SocialMediaIntegration/
 
 # Screenshots
-![Here is a screenshot of what it looks like](screenshot1.png)
-![Here is a screenshot of what it looks like](screenshot2.png)
-![Here is a screenshot of what it looks like](screenshot3.png)
-![Here is a screenshot of what it looks like](screenshot4.png)
+![Here is a screenshot of what it looks like](img/screenshot1.png)
+![Here is a screenshot of what it looks like](img/screenshot2.png)
+![Here is a screenshot of what it looks like](img/screenshot3.png)
+![Here is a screenshot of what it looks like](img/screenshot4.png)
