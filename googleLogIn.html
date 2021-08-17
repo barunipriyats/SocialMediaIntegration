@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="359081627020-bq6oelf06u1gjq9ugfnpeerehp52nekt.apps.googleusercontent.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="description" content="Sign In / Sign Up along with Social Media Integration">
+    <meta name="author" content="Baruni Priya T S">
+    <link rel="stylesheet" href="css/googleLogIn.css">
+    <link rel="shortcut icon" href="img/TitleLogo.svg">
+  </head>
+  
+  <body>
+  
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <section>
+    <div class="container">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
+  </section>
+  
+    <div class="data" style="display: none;">
+      <div class="container">
+        <div class="card">
+          <div class="content">
+            <div class="imgBx">
+                <img id="image" class="rounded-circle" width="100px" height="100px"/>
+            </div>
+          </div>
+          <ul class="sci">
+            <li style="--i:1">
+              <p class="name">Name: <span id="name"></span></p>
+              <p class="email">Email: <span id="email"></span></p>
+              <input type="submit" value="Sign Out" class="btn solid" onclick="signOut();">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="js/vanilla-tilt.js"></script>
+  <script type="text/javascript">
+    VanillaTilt.init(document.querySelector(".data"), {
+      max: 25,
+      speed: 400
+    });
+  </script>
+  <script src="js/googleLogIn.js"></script>
+</html>
