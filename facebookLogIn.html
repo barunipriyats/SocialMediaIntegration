@@ -8,10 +8,76 @@
     <meta name="description" content="Sign In / Sign Up along with Social Media Integration">
     <meta name="author" content="Baruni Priya T S">
     <link rel="shortcut icon" href="img/TitleLogo.svg">
+
+    <style>
+        .fb-login-button{
+        position: absolute !important;
+        z-index: 100;
+        left: 0px;
+        margin-top: 0px;
+        width: auto;
+            height: auto;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            
+            align-items: center;
+            text-align: center;
+    }
+    #login-button{
+        top:50%;
+        left: 1%;
+    }
+    #logout-button{
+        
+    }
+    body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: black;
+        }
+        .particles-js-canvas-el{
+            height: 100vh !important;
+        }
+        #particle-js{
+            position: absolute;
+            color: black;
+        }
+    .data{
+            position: absolute;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            top:0%;
+            bottom: 0;
+            right: 0;
+            left: 0%;
+            /*border: 3px solid white;*/
+            
+        }
+        .containerg{
+             position: absolute;
+            
+            width: 380px;
+            height: auto;
+            /*top: 50% ;
+            transform: translate(-50%, -50%) !important;
+            left: 50% ;*/
+            margin: 10% 35%;
+            background-color: black;
+            color: aliceblue;
+            text-align: center;
+            padding:25px;
+            border-radius: 30px;
+            box-shadow: 0px 0px 10px 4px #efff08 !important
+        }
+    </style>
 </head>
 <body>
     
-    <script>
+    <!-- <script>
         window.fbAsyncInit = function() {
             FB.init({
             appId      : '3744043092364414',
@@ -48,8 +114,82 @@
                 }
             });
         }
-    </script>
+    </script> -->
 
-    <a href="javascript:void(0)" onclick="fbLogin()">Login with facebook</a>
+    <!-- <a href="javascript:void(0)" onclick="fbLogin()">Login with facebook</a> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+
+    <div class="row margin-bottom-small">
+        <div id="login-button" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();">Log in with Facebook</div>
+        <div hidden id="logout-button" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="logout();">Log Out</div>
+        <div id="status"></div>
+    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn" style="margin: 0"></div>
+
+    <script>
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            if (response.status === 'connected') {
+                testAPI();
+            } else {
+                // The person is not logged into your app or we are unable to tell.
+                //document.getElementById('status').innerHTML = 'Please log into this app.';
+                document.getElementById('login-button').style.display = 'block';
+                document.getElementById('logout-button').style.display = 'none';
+            }
+        }
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+        function logout() {
+            FB.logout(function (response) {
+                document.getElementById('logout-button').style.display = 'none';
+                document.getElementById('login-button').style.display = '';
+                document.location.reload();
+            });
+        }
+        window.fbAsyncInit = function() {
+                                FB.init({
+                                appId      : '3744043092364414',
+                                cookie     : true,  // enable cookies to allow the server to access the session
+                                xfbml      : true,  // parse social plugins on this page
+                                version    : 'v11.0' // use graph api version 2.8
+                            });
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        };
+        // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', 'GET', {
+                fields: 'first_name,last_name,name,picture.width(100).height(100)'
+            }, function(response) {
+                console.log('Successful login for: ' + response.name);
+                 document.getElementById('login-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'block';
+                document.getElementById('status').innerHTML ="<div class='data'><div class='containerg' data-tilt><img id='image' class='rounded-circle' src='" + response.picture.data.url + "' width='100px' height='100px'/><div><h3>Name</h3>"+" "+response.name+"<h3>First Name</h3>"+" "+response.first_name+"<h3>Last Name</h3>"+" "+response.last_name+"</div>";
+                
+                /*"<center><table class='containerg'><tr><td><img class='rounded-circle' src='" + response.picture.data.url + "'></td></tr><tr><td><b>First Name :</b><br>"+" "+response.first_name+"</td></tr><br><tr><td><b>Last Name :</b><br>"+" "+response.last_name+"</td></tr><br><tr><td><b>Full Name :</b><br>"+" "+response.name+"</td></tr></table></center>";*/
+            });
+        }
+    </script>
 </body>
 </html>
