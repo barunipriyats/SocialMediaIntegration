@@ -12,30 +12,29 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            background-color: #28282b;
-            font-family: 'Quicksand', sans-serif;
-        }
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #28282b;
+  font-family: 'Quicksand', sans-serif;
+}
+
         .fb-login-button{
-            position: absolute !important;
-            z-index: 100;
-            left: 0px;
-            margin-top: 0px;
             width: auto;
             height: auto;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            align-items: center;
-            text-align: center;
     }
     #login-button{
-        top:50%;
-        left: 1%;
+            width: auto;
+            height: auto;
+            top: 50;
     }
     #logout-button{
         
@@ -58,22 +57,6 @@
             left: 0%;
             /*border: 3px solid white;*/
             
-        }
-        .containerg{
-             position: absolute;
-            
-            width: 380px;
-            height: auto;
-            /*top: 50% ;
-            transform: translate(-50%, -50%) !important;
-            left: 50% ;*/
-            margin: 10% 35%;
-            background-color: black;
-            color: aliceblue;
-            text-align: center;
-            padding:25px;
-            border-radius: 30px;
-            box-shadow: 0px 0px 10px 4px #efff08 !important
         }
 
         
@@ -169,6 +152,10 @@ p span {
   color: #fff;
 }
 
+.row {
+    margin-top: 300px;
+}
+
     </style>
 </head>
 <body>
@@ -242,7 +229,7 @@ p span {
                       <p class="name">Name: <span id="name"></span></p>
                       <p class="first">First: <span id="first"></span></p>
                       <p class="last">Last: <span id="last"></span></p>
-                      <input type="submit" value="Sign Out" class="btn solid" onclick="logout()">
+                      <input type="submit" value="Sign Out" class="btn solid" onclick="signOut();">
                     </li>
                   </ul>
                 </div>
